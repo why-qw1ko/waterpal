@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WaterPal 水友</string>
+    
+    <!-- 通用 -->
+    <string name="loading">加载中...</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    
+    <!-- 登录 -->
+    <string name="login_title">欢迎回来</string>
+    <string name="login_subtitle">登录 WaterPal，和朋友一起健康喝水</string>
+    <string name="phone_hint">请输入手机号</string>
+    <string name="code_hint">验证码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    
+    <!-- 主页 Tab -->
+    <string name="tab_friends">好友</string>
+    <string name="tab_messages">消息</string>
+    <string name="tab_profile">我的</string>
+    
+    <!-- 好友 -->
+    <string name="add_friend">添加好友</string>
+    <string name="send_reminder">发送提醒</string>
+    <string name="friend_hint">输入好友手机号</string>
+    
+    <!-- 消息 -->
+    <string name="no_messages">暂无消息</string>
+    <string name="drink_reminder">喝水提醒</string>
+    
+    <!-- 个人中心 -->
+    <string name="daily_goal">每日目标</string>
+    <string name="cups">杯</string>
+    <string name="settings">设置</string>
+    <string name="logout">退出登录</string>
+    
+    <!-- 提示 -->
+    <string name="login_success">登录成功</string>
+    <string name="login_failed">登录失败</string>
+    <string name="network_error">网络错误，请重试</string>
+    <string name="send_success">发送成功</string>
+    <string name="send_failed">发送失败</string>
+</resources>

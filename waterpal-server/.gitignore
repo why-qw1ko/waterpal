@@ -1,0 +1,65 @@
+# Git Ignore for WaterPal
+
+## Backend (SpringBoot)
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+## Android
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+## Logs
+*.log
+logs/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Sensitive files
+firebase-service-account.json
+google-services.json
+application-local.yml
+*.key
+*.pem
+
+## Docker
+docker-compose.override.yml
