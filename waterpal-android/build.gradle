@@ -1,17 +1,20 @@
-pluginManagement {
+// Top-level build file
+buildscript {
     repositories {
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.2.1'
+        classpath 'com.google.gms:google-services:4.4.0'
     }
 }
 
-rootProject.name = "WaterPal"
-include ':app'
+plugins {
+    id 'com.android.application' version '9.2.1' apply false
+    id 'com.android.library' version '9.2.1' apply false
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}

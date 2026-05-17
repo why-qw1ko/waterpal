@@ -22,8 +22,8 @@ public interface ApiService {
     /**
      * 上报 FCM Token
      */
+    @FormUrlEncoded
     @POST("auth/fcm-token")
-    @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<ApiResponse<Void>> updateFcmToken(
         @Header("X-User-Id") String userId,
         @Field("fcmToken") String fcmToken

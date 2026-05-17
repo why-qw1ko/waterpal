@@ -30,4 +30,10 @@ public class MessagesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // TODO: 加载消息列表
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

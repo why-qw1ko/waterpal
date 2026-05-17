@@ -5,6 +5,9 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
+import com.waterpal.app.network.ApiClient;
+import com.waterpal.app.util.PreferenceManager;
+
 /**
  * Application 入口
  */
@@ -17,6 +20,13 @@ public class WaterPalApplication extends Application {
     public void onCreate() {
         super.onCreate();
         createNotificationChannel();
+        
+        // 初始化网络请求 Token
+        String token = PreferenceManager.getToken(this);
+        long userId = PreferenceManager.getUserId(this);
+        if (token != null && userId != -1) {
+            ApiClient.setAuthToken(token, String.valueOf(userId));
+        }
     }
     
     /**

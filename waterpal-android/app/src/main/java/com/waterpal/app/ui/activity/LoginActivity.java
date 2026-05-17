@@ -37,7 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         apiService = ApiClient.getClient().create(ApiService.class);
         
         // 检查是否已登录
-        if (PreferenceManager.getToken(this) != null) {
+        String savedToken = PreferenceManager.getToken(this);
+        long savedUserId = PreferenceManager.getUserId(this);
+        if (savedToken != null && savedUserId != -1) {
+            ApiClient.setAuthToken(savedToken, String.valueOf(savedUserId));
             navigateToMain();
             return;
         }
@@ -91,6 +94,9 @@ public class LoginActivity extends AppCompatActivity {
                     PreferenceManager.saveToken(LoginActivity.this, data.getToken());
                     PreferenceManager.saveUserId(LoginActivity.this, data.getUserId());
                     PreferenceManager.saveNickname(LoginActivity.this, data.getNickname());
+                    
+                    // 设置全局网络请求 Token 和 UserId
+                    ApiClient.setAuthToken(data.getToken(), String.valueOf(data.getUserId()));
                     
                     Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
                     navigateToMain();

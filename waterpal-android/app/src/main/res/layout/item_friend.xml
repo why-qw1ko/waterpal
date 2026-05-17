@@ -19,7 +19,7 @@
             android:id="@+id/ivAvatar"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@android:drawable/ic_menu_myprofile"
+            android:src="@drawable/ic_person"
             android:background="@color/light_gray"
             android:padding="8dp"/>
 

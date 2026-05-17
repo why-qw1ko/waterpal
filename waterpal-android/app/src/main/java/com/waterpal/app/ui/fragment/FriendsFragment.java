@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.waterpal.app.R;
 import com.waterpal.app.databinding.FragmentFriendsBinding;
 import com.waterpal.app.model.ApiResponse;
 import com.waterpal.app.model.Friend;
@@ -19,6 +20,7 @@ import com.waterpal.app.model.SendReminderRequest;
 import com.waterpal.app.network.ApiClient;
 import com.waterpal.app.network.ApiService;
 import com.waterpal.app.ui.adapter.FriendAdapter;
+import com.waterpal.app.util.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,6 @@ import retrofit2.Response;
 public class FriendsFragment extends Fragment implements FriendAdapter.OnSendReminderListener {
     
     private FragmentFriendsBinding binding;
-    private ApiService apiService;
     private FriendAdapter adapter;
     private List<Friend> friendList = new ArrayList<>();
     
@@ -48,8 +49,6 @@ public class FriendsFragment extends Fragment implements FriendAdapter.OnSendRem
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         
-        apiService = ApiClient.getClient().create(ApiService.class);
-        
         setupRecyclerView();
         setupViews();
         loadFriends();
@@ -63,6 +62,7 @@ public class FriendsFragment extends Fragment implements FriendAdapter.OnSendRem
     
     private void setupViews() {
         binding.btnAddFriend.setOnClickListener(v -> showAddFriendDialog());
+        binding.swipeRefresh.setOnRefreshListener(this::loadFriends);
     }
     
     private void showAddFriendDialog() {
@@ -83,9 +83,12 @@ public class FriendsFragment extends Fragment implements FriendAdapter.OnSendRem
     }
     
     private void loadFriends() {
-        apiService.getFriendList().enqueue(new Callback<ApiResponse<List<Friend>>>() {
+        binding.swipeRefresh.setRefreshing(true);
+        ApiClient.getClient().create(ApiService.class).getFriendList().enqueue(new Callback<ApiResponse<List<Friend>>>() {
             @Override
             public void onResponse(Call<ApiResponse<List<Friend>>> call, Response<ApiResponse<List<Friend>>> response) {
+                if (!isAdded()) return;
+                binding.swipeRefresh.setRefreshing(false);
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                     friendList.clear();
                     List<Friend> data = response.body().getData();
@@ -93,12 +96,26 @@ public class FriendsFragment extends Fragment implements FriendAdapter.OnSendRem
                         friendList.addAll(data);
                         adapter.notifyDataSetChanged();
                     }
+                } else if (response.code() == 401 || response.code() == 403) {
+                    if (response.code() == 401) {
+                        Toast.makeText(getContext(), "会话已过期，请重新登录", Toast.LENGTH_SHORT).show();
+                        // 清除本地信息并跳转登录
+                        PreferenceManager.clear(getContext());
+                        ApiClient.setAuthToken(null);
+                        startActivity(new android.content.Intent(getContext(), com.waterpal.app.ui.activity.LoginActivity.class)
+                            .setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                    } else {
+                        Toast.makeText(getContext(), "权限不足(403)", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
             
             @Override
             public void onFailure(Call<ApiResponse<List<Friend>>> call, Throwable t) {
+                if (!isAdded()) return;
+                binding.swipeRefresh.setRefreshing(false);
                 // 加载失败时显示空列表
+                Toast.makeText(getContext(), R.string.network_error, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -107,9 +124,10 @@ public class FriendsFragment extends Fragment implements FriendAdapter.OnSendRem
     public void onSendReminder(Friend friend) {
         // 发送喝水提醒
         SendReminderRequest request = new SendReminderRequest(friend.getFriendId(), "该喝水啦！💧");
-        apiService.sendReminder(request).enqueue(new Callback<ApiResponse<Void>>() {
+        ApiClient.getClient().create(ApiService.class).sendReminder(request).enqueue(new Callback<ApiResponse<Void>>() {
             @Override
             public void onResponse(Call<ApiResponse<Void>> call, Response<ApiResponse<Void>> response) {
+                if (!isAdded()) return;
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                     Toast.makeText(getContext(), R.string.send_success, Toast.LENGTH_SHORT).show();
                 } else {
@@ -119,8 +137,15 @@ public class FriendsFragment extends Fragment implements FriendAdapter.OnSendRem
             
             @Override
             public void onFailure(Call<ApiResponse<Void>> call, Throwable t) {
+                if (!isAdded()) return;
                 Toast.makeText(getContext(), R.string.network_error, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

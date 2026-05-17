@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.waterpal.app.databinding.FragmentProfileBinding;
+import com.waterpal.app.network.ApiClient;
 import com.waterpal.app.ui.activity.LoginActivity;
 import com.waterpal.app.util.PreferenceManager;
 
@@ -39,6 +40,7 @@ public class ProfileFragment extends Fragment {
         // 退出登录
         binding.btnLogout.setOnClickListener(v -> {
             PreferenceManager.clear(getContext());
+            ApiClient.setAuthToken(null);
             Intent intent = new Intent(getContext(), LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
@@ -46,5 +48,11 @@ public class ProfileFragment extends Fragment {
                 getActivity().finish();
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
