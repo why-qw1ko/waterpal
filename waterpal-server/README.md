@@ -66,7 +66,7 @@ cd waterpal/waterpal-server
 
 # 2. 配置 Firebase（可选，用于推送功能）
 # 复制示例文件并填入你的 Firebase 服务账号密钥
-cp firebase-service-account.json.example firebase-service-account.json
+cp firebase-service-account.json firebase-service-account.json
 
 # 3. 启动 Docker 容器
 docker compose up -d
@@ -98,7 +98,7 @@ docker compose logs -f backend
 mysql -u root -p < schema.sql
 
 # 2. 配置 Firebase（可选）
-cp firebase-service-account.json.example firebase-service-account.json
+cp firebase-service-account.json firebase-service-account.json
 
 # 3. 修改数据库配置
 # 编辑 src/main/resources/application.yml

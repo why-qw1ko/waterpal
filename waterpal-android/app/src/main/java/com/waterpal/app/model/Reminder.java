@@ -35,5 +35,7 @@ public class Reminder {
     public String getSenderAvatar() { return senderAvatar; }
     public String getMessage() { return message; }
     public Integer getIsRead() { return isRead; }
+    public void setIsRead(Integer isRead) { this.isRead = isRead; }
     public Date getCreatedAt() { return createdAt; }
+    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
 }

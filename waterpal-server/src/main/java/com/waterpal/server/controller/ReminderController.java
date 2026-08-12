@@ -49,4 +49,37 @@ public class ReminderController {
         List<ReminderVO> reminders = reminderService.getSentReminders(userId);
         return ApiResponse.success(reminders);
     }
+
+    /**
+     * 标记提醒为已读
+     */
+    @PutMapping("/{id}/read")
+    public ApiResponse<Void> markAsRead(
+            @RequestHeader("X-User-Id") Long userId,
+            @PathVariable Long id) {
+        reminderService.markAsRead(userId, id);
+        return ApiResponse.success(null);
+    }
+
+    /**
+     * 标记提醒为未读
+     */
+    @PutMapping("/{id}/unread")
+    public ApiResponse<Void> markAsUnread(
+            @RequestHeader("X-User-Id") Long userId,
+            @PathVariable Long id) {
+        reminderService.markAsUnread(userId, id);
+        return ApiResponse.success(null);
+    }
+
+    /**
+     * 删除提醒
+     */
+    @DeleteMapping("/{id}")
+    public ApiResponse<Void> deleteReminder(
+            @RequestHeader("X-User-Id") Long userId,
+            @PathVariable Long id) {
+        reminderService.deleteReminder(userId, id);
+        return ApiResponse.success(null);
+    }
 }

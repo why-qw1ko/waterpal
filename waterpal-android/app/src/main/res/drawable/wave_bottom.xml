@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1080dp"
+    android:height="200dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="200">
+    <!-- 后层波浪 -->
+    <path
+        android:fillColor="#30FFFFFF"
+        android:pathData="M0,120 Q270,60 540,100 T1080,80 L1080,200 L0,200 Z"/>
+    <!-- 前层波浪 -->
+    <path
+        android:fillColor="#15FFFFFF"
+        android:pathData="M0,150 Q270,110 540,140 T1080,120 L1080,200 L0,200 Z"/>
+</vector>

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "123456789012",
-    "project_id": "your-project-id",
-    "storage_bucket": "your-project-id.appspot.com"
+    "project_number": "74997393421",
+    "project_id": "waterpal-eb490",
+    "storage_bucket": "waterpal-eb490.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:123456789012:android:abc123def456",
+        "mobilesdk_app_id": "1:74997393421:android:27a3d7169a1375e165cd44",
         "android_client_info": {
           "package_name": "com.waterpal.app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "YOUR_API_KEY_HERE"
+          "current_key": "AIzaSyCtPkLU5bw4Q7dx9XOc2xLfdqE9tV_awE0"
         }
       ],
       "services": {

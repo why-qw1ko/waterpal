@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class ApiClient {
     
     // 后端 API 地址（模拟器用 10.0.2.2，真机用实际 IP）
-    private static final String BASE_URL = "http://192.168.11.4:8080/api/";
+    private static final String BASE_URL = "http://192.168.11.17:8080/api/";
     
     private static volatile Retrofit retrofit = null;
     private static volatile String authToken = null;

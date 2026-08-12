@@ -28,7 +28,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // 公开接口
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .requestMatchers("/swagger-ui","/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 // 其他接口需要认证
                 .anyRequest().authenticated()
             )

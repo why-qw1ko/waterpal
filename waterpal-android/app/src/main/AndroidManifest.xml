@@ -16,7 +16,7 @@
         android:theme="@style/Theme.WaterPal"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        
+
         <!-- 登录页 -->
         <activity
             android:name=".ui.activity.LoginActivity"
@@ -26,21 +26,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
         <!-- 主页 -->
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="false" />
-        
+
+        <!-- 设置页 -->
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:exported="false" />
+
         <!-- Firebase 消息服务 -->
         <service
             android:name=".service.WaterPalMessagingService"
-            android:exported="false">
+            android:exported="false"
+            android:directBootAware="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        
+
+        <!-- FCM 默认通知渠道（后台推送时使用） -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="water_reminder" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/primary" />
+
     </application>
 
 </manifest>

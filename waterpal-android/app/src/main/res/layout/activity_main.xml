@@ -11,23 +11,29 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
+        android:elevation="2dp"
         app:title="@string/app_name"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white"
+        app:titleCentered="true" />
 
-    <!-- Fragment 容器 -->
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
+    <!-- ViewPager2 支持左右滑动切换 Tab -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
-    <!-- 底部导航 -->
+    <!-- 底部导航（无图标后方圆角阴影，支持滑动同步） -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:elevation="8dp"
         app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"/>
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:itemRippleColor="@android:color/transparent" />
 
 </LinearLayout>

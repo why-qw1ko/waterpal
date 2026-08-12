@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WaterPal 水友</string>
-    
+
     <!-- 通用 -->
     <string name="loading">加载中...</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="save">保存</string>
-    
+    <string name="delete">删除</string>
+
     <!-- 登录 -->
     <string name="login_title">欢迎回来</string>
     <string name="login_subtitle">登录 WaterPal，和朋友一起健康喝水</string>
@@ -16,31 +17,60 @@
     <string name="get_code">获取验证码</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
-    
+
     <!-- 主页 Tab -->
     <string name="tab_friends">好友</string>
     <string name="tab_messages">消息</string>
     <string name="tab_profile">我的</string>
-    
+
     <!-- 好友 -->
     <string name="add_friend">添加好友</string>
-    <string name="send_reminder">发送提醒</string>
+    <string name="send_reminder">💧 提醒喝水</string>
     <string name="friend_hint">输入好友手机号</string>
-    
+    <string name="no_friends">还没有好友\n点击上方按钮添加吧 💧</string>
+    <string name="add_friend_title">添加好友</string>
+    <string name="add_friend_confirm">确认添加</string>
+    <string name="add_success">好友添加成功</string>
+    <string name="already_friends">你们已经是好友了</string>
+    <string name="not_registered">该手机号未注册</string>
+    <string name="cannot_add_self">不能添加自己</string>
+    <string name="delete_friend_title">删除好友</string>
+    <string name="delete_friend_msg">确定要删除好友吗？删除后你们将不再互相关注。</string>
+    <string name="delete_success">已删除好友</string>
+    <string name="delete_failed">删除失败，请重试</string>
+
     <!-- 消息 -->
     <string name="no_messages">暂无消息</string>
     <string name="drink_reminder">喝水提醒</string>
-    
+    <string name="sent_you">提醒你喝水</string>
+    <string name="you_sent">你提醒了</string>
+
     <!-- 个人中心 -->
-    <string name="daily_goal">每日目标</string>
+    <string name="daily_goal">每日喝水目标</string>
     <string name="cups">杯</string>
     <string name="settings">设置</string>
     <string name="logout">退出登录</string>
-    
+    <string name="edit_nickname">修改昵称</string>
+    <string name="nickname_hint">请输入新昵称</string>
+    <string name="goal_saved">目标已更新</string>
+    <string name="nickname_saved">昵称已更新</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">设置</string>
+    <string name="theme_setting">主题配色</string>
+    <string name="theme_coral">温暖珊瑚</string>
+    <string name="theme_mint">清新青绿</string>
+    <string name="theme_dark">深邃紫蓝</string>
+    <string name="show_avatars">显示好友头像</string>
+    <string name="show_avatars_desc">开启后将从网络加载好友头像</string>
+    <string name="about">关于</string>
+    <string name="version">版本</string>
+    <string name="theme_changed">主题已切换，重启后生效</string>
+
     <!-- 提示 -->
     <string name="login_success">登录成功</string>
     <string name="login_failed">登录失败</string>
     <string name="network_error">网络错误，请重试</string>
-    <string name="send_success">发送成功</string>
+    <string name="send_success">提醒已发送 💧</string>
     <string name="send_failed">发送失败</string>
 </resources>

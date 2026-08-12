@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- 发送者头像 -->
+    <FrameLayout
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="16dp">
+
+        <View
+            android:id="@+id/viewDetailAvatarBg"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/avatar_circle" />
+
+        <TextView
+            android:id="@+id/tvDetailAvatar"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:text="💧" />
+    </FrameLayout>
+
+    <!-- 发送者名称 -->
+    <TextView
+        android:id="@+id/tvDetailSender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="4dp" />
+
+    <!-- 时间 -->
+    <TextView
+        android:id="@+id/tvDetailTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/text_hint"
+        android:layout_marginBottom="20dp" />
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        android:layout_marginBottom="20dp" />
+
+    <!-- 消息内容 -->
+    <TextView
+        android:id="@+id/tvDetailMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_primary"
+        android:gravity="center"
+        android:lineSpacingExtra="6dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+
+    <!-- 预留：附加描述区域 -->
+    <LinearLayout
+        android:id="@+id/cardDetailExtra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/detail_extra_bg"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详情描述"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvDetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:text="暂无详细描述（预留区域）" />
+    </LinearLayout>
+
+</LinearLayout>

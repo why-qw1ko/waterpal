@@ -12,15 +12,15 @@ import com.waterpal.app.util.PreferenceManager;
  * Application 入口
  */
 public class WaterPalApplication extends Application {
-    
+
     public static final String CHANNEL_ID = "water_reminder";
     public static final String CHANNEL_NAME = "喝水提醒";
-    
+
     @Override
     public void onCreate() {
         super.onCreate();
         createNotificationChannel();
-        
+
         // 初始化网络请求 Token
         String token = PreferenceManager.getToken(this);
         long userId = PreferenceManager.getUserId(this);
@@ -28,7 +28,7 @@ public class WaterPalApplication extends Application {
             ApiClient.setAuthToken(token, String.valueOf(userId));
         }
     }
-    
+
     /**
      * 创建通知渠道（Android 8.0+）
      */
@@ -41,7 +41,7 @@ public class WaterPalApplication extends Application {
             );
             channel.setDescription("朋友发送的喝水提醒通知");
             channel.enableVibration(true);
-            
+
             NotificationManager manager = getSystemService(NotificationManager.class);
             if (manager != null) {
                 manager.createNotificationChannel(channel);

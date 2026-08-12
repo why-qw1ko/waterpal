@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
+
+        <!-- 大预览圆 -->
+        <FrameLayout
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="14dp">
+
+            <View
+                android:id="@+id/viewColorPreview"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/color_preview_circle" />
+
+            <TextView
+                android:id="@+id/tvPreviewCheck"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:text="✓"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:gravity="center"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- 色值 -->
+        <TextView
+            android:id="@+id/tvHexValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#03A9F4"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="20dp" />
+
+        <!-- 色相（色调） -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="色相"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="4dp" />
+
+        <com.waterpal.app.ui.widget.RoundedSeekBar
+            android:id="@+id/sbHue"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 饱和度 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="饱和度"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="4dp" />
+
+        <com.waterpal.app.ui.widget.RoundedSeekBar
+            android:id="@+id/sbSaturation"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 亮度 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="亮度"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="4dp" />
+
+        <com.waterpal.app.ui.widget.RoundedSeekBar
+            android:id="@+id/sbBrightness"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+</ScrollView>
